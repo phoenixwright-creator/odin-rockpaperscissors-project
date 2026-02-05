@@ -25,27 +25,27 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === "Rock" && computerChoice === "Paper") {
-        computerScore++;
+        ++computerScore;
         console.log("Computer wins !");
     }
     else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-        humanScore++;
+        ++humanScore;
         console.log("Human wins !");
     }
     else if (humanChoice === "Paper" && computerChoice === "Rock") {
-        humanScore++;
+        ++humanScore;
         console.log("Human wins !");
     }
     else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-        computerScore++;
+        ++computerScore;
         console.log("Computer wins !");
     }
     else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-        computerScore++;
+        ++computerScore;
         console.log("Computer wins !");
     }
     else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-        humanScore++;
+        ++humanScore;
         console.log("Human wins !");
     }
     else {
@@ -58,34 +58,40 @@ function playGame() {
     //First round
     let humanChoice = getHumanChoice();
     console.log("Human plays : " + humanChoice);
-
     let computerChoice = getComputerChoice();
     console.log("Computer plays : " + computerChoice);
-
     playRound(humanChoice, computerChoice);
     console.log("Score = " + humanScore + " - " + computerScore);
 
     //Second round
     humanChoice = getHumanChoice();
+    console.log("Human plays : " + humanChoice);
     computerChoice = getComputerChoice();
+    console.log("Computer plays : " + computerChoice);
     playRound(humanChoice, computerChoice);
     console.log("Score = " + humanScore + " - " + computerScore);
 
     //Third round
     humanChoice = getHumanChoice();
+    console.log("Human plays : " + humanChoice);
     computerChoice = getComputerChoice();
+    console.log("Computer plays : " + computerChoice);
     playRound(humanChoice, computerChoice);
     console.log("Score = " + humanScore + " - " + computerScore);
 
     //Fourth round
     humanChoice = getHumanChoice();
+    console.log("Human plays : " + humanChoice);
     computerChoice = getComputerChoice();
+    console.log("Computer plays : " + computerChoice);
     playRound(humanChoice, computerChoice);
     console.log("Score = " + humanScore + " - " + computerScore);
 
     //Fifth round
     humanChoice = getHumanChoice();
+    console.log("Human plays : " + humanChoice);
     computerChoice = getComputerChoice();
+    console.log("Computer plays : " + computerChoice);
     playRound(humanChoice, computerChoice);
     console.log("Score = " + humanScore + " - " + computerScore);
 
