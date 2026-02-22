@@ -1,3 +1,5 @@
+playGame();
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
     switch(choice) {
@@ -10,15 +12,47 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("What will you play ? Enter a one of these words : Rock | Paper | Scissors :");
+function getHumanChoice(event) {
+    // let choice = prompt("What will you play ? Enter a one of these words : Rock | Paper | Scissors :");
 
-    return choice.toLowerCase();
+    return event.target.textContent;
 }
 
 function playGame() {
 
+    let humanScore = 0;
+    let computerScore = 0;
+    let round = 0;
+    
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            let humanChoice = e.target.textContent.toLowerCase();
+            let computerChoice = getComputerChoice();
+            console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
+            playRound(humanChoice, computerChoice);
+
+            if(round === 5) {
+                if (humanScore > computerScore) {
+                    alert("Human won the game !!!");
+                }
+                else if (computerScore > humanScore) {
+                    alert("Computer won the game !!!");
+                }
+                else {
+                    alert("No one won !!! Wow, we don't see that often, congrats to both of you !!!");
+                }
+                round = 0;
+                humanScore = 0;
+                computerScore = 0;
+            }
+        });
+    });
+
     function playRound(humanChoice, computerChoice) {
+        ++round;
+        console.log ("Round : " + round);
         if (humanChoice === "rock" && computerChoice === "paper") {
             ++computerScore;
             console.log("Computer wins ! Score = Human : " + humanScore + " - Computer : " + computerScore);
@@ -47,49 +81,4 @@ function playGame() {
             console.log("It's a tie ! Score = Human : " + humanScore + " - Computer : " + computerScore);
         }
     }
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    //First round
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    //Second round
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
-    console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    //Third round
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
-    console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    //Fourth round
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
-    console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    //Fifth round
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
-    console.log("Human plays : " + humanChoice + " - Computer plays : " + computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    if (humanScore > computerScore) {
-        console.log("Human won the game !!!");
-    }
-    else if (computerScore > humanScore) {
-        console.log("Computer won the game !!!");
-    }
-    else {
-        console.log("No one won !!! Wow, we don't see that often, congrats to both of you !!!");
-    }
 }
-
-playGame();
